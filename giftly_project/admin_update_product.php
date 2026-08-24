@@ -64,9 +64,9 @@ if (isset($_POST['update_product'])) {
         exit();
     }
 
-    $name = mysqli_real_escape_string($conn, $name);
-    $desc = mysqli_real_escape_string($conn, $desc);
-    $category_id = mysqli_real_escape_string($conn, $category_id);
+    $name = $conn->real_escape_string($name);
+    $desc = $conn->real_escape_string($desc);
+    $category_id = $conn->real_escape_string($category_id);
 
     if (!empty($_FILES["image"]["name"])) {
         $target_dir = "uploads/";

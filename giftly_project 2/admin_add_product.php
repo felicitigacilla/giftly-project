@@ -2,8 +2,8 @@
 include 'db_connect.php';
 
 if (isset($_POST['add_product'])) {
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $desc = mysqli_real_escape_string($conn, $_POST['description']);
+    $name = $conn->real_escape_string($_POST['name']);
+    $desc = $conn->real_escape_string($_POST['description']);
     $price = floatval($_POST['price']); // Convert to float
     $quantity = intval($_POST['quantity']); // Convert to integer
     $category_id = $_POST['category_id'];

@@ -4,7 +4,7 @@ include 'db_connect.php';
 $response = array('success' => false, 'message' => '');
 
 if (isset($_POST['email'])) {
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $email = $conn->real_escape_string($_POST['email']);
     
     // 🚨 THIS IS THE REAL CHECK! It checks your actual database.
     $check = $conn->query("SELECT id FROM users WHERE email = '$email'");

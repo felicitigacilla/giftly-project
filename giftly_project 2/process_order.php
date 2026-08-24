@@ -67,19 +67,19 @@ try {
     }
     
     // 4. Insert order
-    $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
-    $sender_phone = mysqli_real_escape_string($conn, $_POST['sender_phone']);
-    $address = mysqli_real_escape_string($conn, $_POST['address']);
-    $city = mysqli_real_escape_string($conn, $_POST['city']);
-    $payment = mysqli_real_escape_string($conn, $_POST['payment_method']);
-    $delivery_date = mysqli_real_escape_string($conn, $_POST['delivery_date']);
-    $delivery_time = mysqli_real_escape_string($conn, $_POST['delivery_time']);
-    $gift_message = isset($_POST['gift_message']) ? mysqli_real_escape_string($conn, $_POST['gift_message']) : '';
+    $fullname = $conn->real_escape_string($_POST['fullname']);
+    $sender_phone = $conn->real_escape_string($_POST['sender_phone']);
+    $address = $conn->real_escape_string($_POST['address']);
+    $city = $conn->real_escape_string($_POST['city']);
+    $payment = $conn->real_escape_string($_POST['payment_method']);
+    $delivery_date = $conn->real_escape_string($_POST['delivery_date']);
+    $delivery_time = $conn->real_escape_string($_POST['delivery_time']);
+    $gift_message = isset($_POST['gift_message']) ? $conn->real_escape_string($_POST['gift_message']) : '';
     $delivery_type = isset($_POST['delivery_type']) ? $_POST['delivery_type'] : 'me';
     
     if ($delivery_type == 'recipient') {
-        $recipient = isset($_POST['recipient_name']) ? mysqli_real_escape_string($conn, $_POST['recipient_name']) : NULL;
-        $recipient_phone = isset($_POST['recipient_phone']) ? mysqli_real_escape_string($conn, $_POST['recipient_phone']) : NULL;
+        $recipient = isset($_POST['recipient_name']) ? $conn->real_escape_string($_POST['recipient_name']) : NULL;
+        $recipient_phone = isset($_POST['recipient_phone']) ? $conn->real_escape_string($_POST['recipient_phone']) : NULL;
     } else {
         $recipient = NULL;
         $recipient_phone = NULL;

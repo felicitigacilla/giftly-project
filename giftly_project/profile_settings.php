@@ -18,10 +18,10 @@ $msg_type = '';
 
 if (isset($_POST['update_profile'])) {
     // 🛑 SAFE GRAB: Always grab these from the POST, or fall back to the database if they are missing
-    $submitted_firstname = isset($_POST['firstname']) ? mysqli_real_escape_string($conn, $_POST['firstname']) : '';
-    $submitted_lastname = isset($_POST['lastname']) ? mysqli_real_escape_string($conn, $_POST['lastname']) : '';
-    $submitted_email = isset($_POST['email']) ? mysqli_real_escape_string($conn, $_POST['email']) : '';
-    $submitted_phone = isset($_POST['phone']) ? mysqli_real_escape_string($conn, $_POST['phone']) : '';
+    $submitted_firstname = isset($_POST['firstname']) ? $conn->real_escape_string($_POST['firstname']) : '';
+    $submitted_lastname = isset($_POST['lastname']) ? $conn->real_escape_string($_POST['lastname']) : '';
+    $submitted_email = isset($_POST['email']) ? $conn->real_escape_string($_POST['email']) : '';
+    $submitted_phone = isset($_POST['phone']) ? $conn->real_escape_string($_POST['phone']) : '';
 
     // If text fields are sent, use them. If not (like when just uploading a pic), keep the DB values.
     $firstname = !empty($submitted_firstname) ? $submitted_firstname : $firstname;

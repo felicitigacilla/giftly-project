@@ -4,7 +4,7 @@ include 'db_connect.php';
 $response = array('success' => false, 'message' => '');
 
 if (isset($_POST['token']) && isset($_POST['password'])) {
-    $token = mysqli_real_escape_string($conn, $_POST['token']);
+    $token = $conn->real_escape_string($_POST['token']);
     $new_pass = $_POST['password'];
     
     // 💡 THIS IS THE ONLY PLACE WE CHECK THE TOKEN NOW
