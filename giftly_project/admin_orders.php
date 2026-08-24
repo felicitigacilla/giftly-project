@@ -18,7 +18,7 @@ if ($user_data['role'] !== 'admin') {
 $show_updated = false;
 if (isset($_POST['update_status_here']) && isset($_POST['order_id']) && isset($_POST['status'])) {
     $order_id = intval($_POST['order_id']);
-    $new_status = mysqli_real_escape_string($conn, $_POST['status']);
+    $new_status = $conn->real_escape_string($_POST['status']);
     $sql = "UPDATE orders SET status = '$new_status' WHERE id = $order_id";
     if ($conn->query($sql) === TRUE) {
         $show_updated = true; // Show the banner right here

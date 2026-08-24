@@ -13,11 +13,11 @@ if (isset($_GET['delete_address'])) {
 
 // Handle Adding
 if (isset($_POST['add_address'])) {
-    $label = mysqli_real_escape_string($conn, $_POST['label']); // Grab the label
-    $address = mysqli_real_escape_string($conn, $_POST['address']);
-    $city = mysqli_real_escape_string($conn, $_POST['city']);
-    $province = mysqli_real_escape_string($conn, $_POST['province']);
-    $zip = mysqli_real_escape_string($conn, $_POST['zip']);
+    $label = $conn->real_escape_string($_POST['label']); // Grab the label
+    $address = $conn->real_escape_string($_POST['address']);
+    $city = $conn->real_escape_string($_POST['city']);
+    $province = $conn->real_escape_string($_POST['province']);
+    $zip = $conn->real_escape_string($_POST['zip']);
     
     // ✅ Update the SQL to include 'label'
     $conn->query("INSERT INTO addresses (user_id, label, address, city, province, zip) VALUES ($user_id, '$label', '$address', '$city', '$province', '$zip')");

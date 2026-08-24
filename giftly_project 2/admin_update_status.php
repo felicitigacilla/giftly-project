@@ -18,7 +18,7 @@ if ($user_data['role'] !== 'admin') {
 if (isset($_POST['update_status']) && isset($_POST['order_id']) && isset($_POST['status'])) {
     
     $order_id = intval($_POST['order_id']); // Force it to be a safe integer
-    $new_status = mysqli_real_escape_string($conn, $_POST['status']);
+    $new_status = $conn->real_escape_string($_POST['status']);
 
     // Run the update
     $sql = "UPDATE orders SET status = '$new_status' WHERE id = $order_id";

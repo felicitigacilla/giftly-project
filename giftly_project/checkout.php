@@ -31,11 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // GET ADDRESS & PAYMENT DATA
-    $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
-    $address = mysqli_real_escape_string($conn, $_POST['address']);
-    $city = mysqli_real_escape_string($conn, $_POST['city']);
-    $recipient = isset($_POST['recipient_name']) ? mysqli_real_escape_string($conn, $_POST['recipient_name']) : NULL;
-    $payment = mysqli_real_escape_string($conn, $_POST['payment_method']);
+    $fullname = $conn->real_escape_string($_POST['fullname']);
+    $address = $conn->real_escape_string($_POST['address']);
+    $city = $conn->real_escape_string($_POST['city']);
+    $recipient = isset($_POST['recipient_name']) ? $conn->real_escape_string($_POST['recipient_name']) : NULL;
+    $payment = $conn->real_escape_string($_POST['payment_method']);
 
     // INSERT ORDERS WITH NEW COLUMNS
     $conn->query("INSERT INTO orders (user_id, total_amount, status, fullname, address, city, recipient_name, payment_method) 

@@ -14,10 +14,10 @@ if (isset($_SESSION['user_id'])) {
 
 if (isset($_POST['register'])) {
     // 1. Capture ALL data correctly
-    $firstname = isset($_POST['firstname']) ? mysqli_real_escape_string($conn, $_POST['firstname']) : '';
-    $lastname  = isset($_POST['lastname']) ? mysqli_real_escape_string($conn, $_POST['lastname']) : '';
-    $email     = isset($_POST['email']) ? mysqli_real_escape_string($conn, $_POST['email']) : '';
-    $phone     = isset($_POST['phone']) ? mysqli_real_escape_string($conn, $_POST['phone']) : '';
+    $firstname = isset($_POST['firstname']) ? $conn->real_escape_string($_POST['firstname']) : '';
+    $lastname  = isset($_POST['lastname']) ? $conn->real_escape_string($_POST['lastname']) : '';
+    $email     = isset($_POST['email']) ? $conn->real_escape_string($_POST['email']) : '';
+    $phone     = isset($_POST['phone']) ? $conn->real_escape_string($_POST['phone']) : '';
     $password  = isset($_POST['password']) ? $_POST['password'] : '';
     $confirm   = isset($_POST['confirm_password']) ? $_POST['confirm_password'] : '';
 

@@ -16,7 +16,7 @@ if ($user_data['role'] !== 'admin') {
 
 // Handle ADD category
 if (isset($_POST['add_category'])) {
-    $cat_name = mysqli_real_escape_string($conn, $_POST['cat_name']);
+    $cat_name = $conn->real_escape_string($_POST['cat_name']);
     $sql = "INSERT INTO categories (name) VALUES ('$cat_name')";
     $conn->query($sql);
     header("Location: admin_categories.php?msg=added");
@@ -34,7 +34,7 @@ if (isset($_GET['delete'])) {
 // Handle UPDATE (RENAME) category
 if (isset($_POST['update_category'])) {
     $id = $_POST['cat_id'];
-    $new_name = mysqli_real_escape_string($conn, $_POST['cat_name']);
+    $new_name = $conn->real_escape_string($_POST['cat_name']);
     $conn->query("UPDATE categories SET name = '$new_name' WHERE id = $id");
     header("Location: admin_categories.php?msg=updated");
     exit();
