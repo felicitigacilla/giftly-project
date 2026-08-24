@@ -107,21 +107,21 @@ class DBCompat {
     }
 }
 
-// Connection settings - prefer environment DATABASE_URL (Render) or PG* vars
+// Connection settings - support DATABASE_URL / PG* / Render DB_* environment formats
 $databaseUrl = getenv('DATABASE_URL') ?: getenv('PG_URI') ?: false;
 if ($databaseUrl) {
     $parts = parse_url($databaseUrl);
-    $host = $parts['host'] ?? 'localhost';
-    $user = $parts['user'] ?? 'postgres';
-    $pass = $parts['pass'] ?? '';
-    $dbname = isset($parts['path']) ? ltrim($parts['path'], '/') : 'giftly_db';
-    $port = $parts['port'] ?? null;
+    $host = $parts['host'] ?? getenv('DB_HOST') ?: 'localhost';
+    $user = $parts['user'] ?? getenv('DB_USERNAME') ?: getenv('PGUSER') ?: 'postgres';
+    $pass = $parts['pass'] ?? getenv('DB_PASSWORD') ?: getenv('PGPASSWORD') ?: '';
+    $dbname = isset($parts['path']) ? ltrim($parts['path'], '/') : (getenv('DB_DATABASE') ?: getenv('PGDATABASE') ?: 'giftly_db');
+    $port = $parts['port'] ?? (getenv('DB_PORT') ?: getenv('PGPORT') ?: null);
 } else {
-    $host = getenv('PGHOST') ?: 'localhost';
-    $user = getenv('PGUSER') ?: 'postgres';
-    $pass = getenv('PGPASSWORD') ?: '';
-    $dbname = getenv('PGDATABASE') ?: 'giftly_db';
-    $port = getenv('PGPORT') ?: null;
+    $host = getenv('DB_HOST') ?: getenv('PGHOST') ?: 'localhost';
+    $user = getenv('DB_USERNAME') ?: getenv('PGUSER') ?: 'postgres';
+    $pass = getenv('DB_PASSWORD') ?: getenv('PGPASSWORD') ?: '';
+    $dbname = getenv('DB_DATABASE') ?: getenv('PGDATABASE') ?: 'giftly_db';
+    $port = getenv('DB_PORT') ?: getenv('PGPORT') ?: null;
 }
 
 // Create a DBCompat instance and expose it as $conn
