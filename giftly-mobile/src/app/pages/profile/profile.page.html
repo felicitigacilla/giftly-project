@@ -1,0 +1,79 @@
+<ion-content class="giftly-shell ion-padding">
+  <div class="top-bar">
+    <div class="brand-wrap">
+      <span class="giftly-logo">GIFTLY</span>
+    </div>
+    <div class="top-actions">
+      <ion-button class="login-pill" fill="clear" size="small" routerLink="/login">Login</ion-button>
+      <ion-button fill="clear" class="icon-button" routerLink="/shop">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" class="icon-button" routerLink="/cart">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <h1 class="title">My Profile</h1>
+
+  <div class="profile-header">
+    <div class="avatar">P</div>
+    <div class="profile-name">Peatzie Cosino</div>
+    <div class="profile-email">peatzie.cosino@gmail.com</div>
+  </div>
+
+  <div class="menu-list">
+    <button class="menu-item" type="button">
+      <span class="menu-icon">◔</span>
+      <span>Personal Information</span>
+      <span class="arrow">›</span>
+    </button>
+    <button class="menu-item" type="button">
+      <span class="menu-icon">◫</span>
+      <span>Payment Methods</span>
+      <span class="arrow">›</span>
+    </button>
+    <button class="menu-item" type="button">
+      <span class="menu-icon">◌</span>
+      <span>Saved Addresses</span>
+      <span class="arrow">›</span>
+    </button>
+    <button class="menu-item" type="button">
+      <span class="menu-icon">▣</span>
+      <span>My Giftly History</span>
+      <span class="arrow">›</span>
+    </button>
+    <button class="menu-item" type="button">
+      <span class="menu-icon">✦</span>
+      <span>About Giftly</span>
+      <span class="arrow">›</span>
+    </button>
+    <button class="menu-item" type="button">
+      <span class="menu-icon">✓</span>
+      <span>Terms &amp; Conditions</span>
+      <span class="arrow">›</span>
+    </button>
+  </div>
+
+  <div class="bottom-nav">
+    <button class="nav-item" (click)="router.navigateByUrl('/home')">
+      <ion-icon name="home-outline"></ion-icon>
+      <span>Home</span>
+    </button>
+    <button class="nav-item" (click)="router.navigateByUrl('/shop')">
+      <ion-icon name="bag-outline"></ion-icon>
+      <span>Shop</span>
+    </button>
+    <button class="nav-item add-button" (click)="router.navigateByUrl('/orders')">
+      <ion-icon name="add-outline"></ion-icon>
+    </button>
+    <button class="nav-item" (click)="router.navigateByUrl('/orders')">
+      <ion-icon name="cube-outline"></ion-icon>
+      <span>Orders</span>
+    </button>
+    <button class="nav-item active" (click)="router.navigateByUrl('/profile')">
+      <ion-icon name="person-outline"></ion-icon>
+      <span>Profile</span>
+    </button>
+  </div>
+</ion-content>

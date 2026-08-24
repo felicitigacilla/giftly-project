@@ -1,0 +1,35 @@
+.auth-shell {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-card {
+  width: min(100%, 420px);
+  border-radius: 20px;
+  box-shadow: none;
+}
+
+.brand-block {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.brand-mark {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 0;
+  font-weight: 700;
+}

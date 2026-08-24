@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ isRegister ? 'Create account' : 'Welcome back' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="auth-shell">
+    <ion-card>
+      <ion-card-content>
+        <div class="brand-block">
+          <div class="brand-mark">G</div>
+          <h2>Giftly</h2>
+        </div>
+
+        <form (ngSubmit)="submit()">
+          <ion-item *ngIf="isRegister">
+            <ion-label position="stacked">Full name</ion-label>
+            <ion-input [(ngModel)]="name" name="name" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input [(ngModel)]="email" name="email" type="email"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="isRegister">
+            <ion-label position="stacked">Phone</ion-label>
+            <ion-input [(ngModel)]="phone" name="phone" type="tel"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input [(ngModel)]="password" name="password" type="password"></ion-input>
+          </ion-item>
+
+          <ion-button expand="block" type="submit" class="ion-margin-top" [disabled]="loading">
+            {{ loading ? 'Please wait...' : (isRegister ? 'Register' : 'Login') }}
+          </ion-button>
+        </form>
+
+        <ion-button fill="clear" expand="block" class="ion-margin-top" (click)="isRegister = !isRegister">
+          {{ isRegister ? 'Already have an account? Login' : 'Need an account? Register' }}
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

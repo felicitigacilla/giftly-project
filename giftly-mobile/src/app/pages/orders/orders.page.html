@@ -1,0 +1,82 @@
+<ion-content class="giftly-shell ion-padding">
+  <div class="top-bar">
+    <div class="brand-wrap">
+      <span class="giftly-logo">GIFTLY</span>
+    </div>
+    <div class="top-actions">
+      <ion-button class="login-pill" fill="clear" size="small" routerLink="/login">Login</ion-button>
+      <ion-button fill="clear" class="icon-button" routerLink="/shop">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" class="icon-button" routerLink="/cart">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <h1 class="title">My Orders</h1>
+
+  <div class="filter-row">
+    <button class="filter active" type="button">All Orders</button>
+    <button class="filter" type="button">Processing</button>
+    <button class="filter" type="button">Shipped</button>
+    <button class="filter" type="button">Delivered</button>
+  </div>
+
+  <div *ngIf="loading" class="empty-state">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <div *ngIf="!loading && orders.length === 0" class="empty-state empty-order">
+    <ion-icon name="receipt-outline" size="large"></ion-icon>
+    <p>No orders yet.</p>
+  </div>
+
+  <div class="order-list" *ngIf="!loading && orders.length > 0">
+    <div class="order-card" *ngFor="let order of orders">
+      <div class="order-head">
+        <div class="order-id">Order #{{ order.id }}</div>
+        <button class="track-button" type="button">Track Order</button>
+      </div>
+      <div class="order-line">
+        <span>{{ order.created_at || 'August 2, 2026' }}</span>
+        <span class="status-pill" [class.shipped]="(order.status || 'pending') === 'pending' || (order.status || 'pending') === 'shipped'" [class.delivered]="(order.status || 'pending') === 'delivered'">
+          {{ order.status || 'Shipped' }}
+        </span>
+      </div>
+      <div class="order-item">
+        <div class="thumb">
+          <img *ngIf="order.image" [src]="order.image" alt="order item" />
+          <div *ngIf="!order.image" class="thumb-placeholder">Giftly</div>
+        </div>
+        <div class="item-text">
+          <p>1x Mother's Day Box</p>
+          <p>1x Candle</p>
+          <strong>PHP {{ order.total_amount || order.total || 650 }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <button class="nav-item" (click)="router.navigateByUrl('/home')">
+      <ion-icon name="home-outline"></ion-icon>
+      <span>Home</span>
+    </button>
+    <button class="nav-item" (click)="router.navigateByUrl('/shop')">
+      <ion-icon name="bag-outline"></ion-icon>
+      <span>Shop</span>
+    </button>
+    <button class="nav-item add-button" (click)="router.navigateByUrl('/orders')">
+      <ion-icon name="add-outline"></ion-icon>
+    </button>
+    <button class="nav-item active" (click)="router.navigateByUrl('/orders')">
+      <ion-icon name="cube-outline"></ion-icon>
+      <span>Orders</span>
+    </button>
+    <button class="nav-item" (click)="router.navigateByUrl('/profile')">
+      <ion-icon name="person-outline"></ion-icon>
+      <span>Profile</span>
+    </button>
+  </div>
+</ion-content>

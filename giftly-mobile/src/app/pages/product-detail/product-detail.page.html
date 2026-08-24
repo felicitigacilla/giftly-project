@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/shop"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/cart">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="loading" class="loading-state">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <ng-container *ngIf="!loading && product">
+    <div class="product-hero">
+      <img *ngIf="product.image" [src]="product.image" [alt]="product.name" />
+      <div *ngIf="!product.image" class="product-image-placeholder">Giftly</div>
+    </div>
+
+    <div class="product-header-row">
+      <div>
+        <h2>{{ product.name }}</h2>
+        <div class="price-line">PHP {{ product.price || 0 }}</div>
+      </div>
+      <ion-button fill="clear" class="cart-button" routerLink="/cart">
+        <ion-icon name="cart-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="qty-row">
+      <ion-button fill="clear" class="stepper" (click)="decreaseQuantity()">-</ion-button>
+      <div class="qty-box">{{ quantity }}</div>
+      <ion-button fill="clear" class="stepper" (click)="increaseQuantity()">+</ion-button>
+    </div>
+
+    <p class="description">
+      {{ product.description || 'A curated expression of affection, designed for gifting and memorable occasions.' }}
+    </p>
+
+    <div class="details-box">
+      <h3>Product Details</h3>
+      <ul>
+        <li *ngFor="let item of (product.details || ['A curated selection for your next special moment'])">{{ item }}</li>
+      </ul>
+    </div>
+
+    <ion-button expand="block" class="primary-action" (click)="addToCart()">Add to cart</ion-button>
+  </ng-container>
+</ion-content>

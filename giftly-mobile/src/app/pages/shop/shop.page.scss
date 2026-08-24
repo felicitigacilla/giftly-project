@@ -1,0 +1,208 @@
+:host {
+  display: block;
+  background: #f7f5f3;
+}
+
+.giftly-shell {
+  --ion-background-color: #f7f5f3;
+  background: #f7f5f3;
+  padding-bottom: 5rem;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.giftly-logo {
+  font-family: 'Trebuchet MS', 'Arial Black', sans-serif;
+  font-size: 2.1rem;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  color: #111;
+  text-shadow: 0 0 0 #f6a9b5, 1px 1px 0 #f29bb4, 2px 2px 0 #ef859f, 3px 3px 0 #f7c3d0;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.login-pill {
+  --background: #f7c9d2;
+  --color: #111;
+  --border-radius: 999px;
+  min-height: 38px;
+  font-weight: 700;
+  padding-inline: 1.2rem;
+}
+
+.icon-button {
+  --color: #111;
+  --padding-start: 4px;
+  --padding-end: 4px;
+}
+
+.title {
+  margin: 0 0 1rem;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #111;
+}
+
+.category-row {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.category-pill {
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  background: #f2eeed;
+  color: #222;
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.category-pill.active {
+  background: #f7d7dc;
+  border-color: #ef9eb1;
+  color: #111;
+}
+
+.loading-state,
+.empty-state {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--ion-color-medium);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.product-grid ion-card {
+  margin: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: none;
+  border: 1px solid rgba(17,17,17,0.06);
+}
+
+.product-image-wrap {
+  background: linear-gradient(135deg, #f8eef0, #f3e4ea);
+  display: grid;
+  place-items: center;
+  height: 165px;
+}
+
+.product-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-pattern {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #d983a2;
+  letter-spacing: 0.05em;
+}
+
+.product-grid ion-card-content {
+  padding: 0.8rem 0.8rem 0.9rem;
+}
+
+.product-grid h4 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #111;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.mini-cart {
+  --color: #111;
+  --padding-start: 0;
+  --padding-end: 0;
+  min-width: 28px;
+}
+
+.bottom-nav {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255,255,255,0.96);
+  border-radius: 20px 20px 0 0;
+  padding: 0.7rem 0.4rem 0.8rem;
+  margin-top: 1.3rem;
+  box-shadow: 0 -8px 18px rgba(17,17,17,0.06);
+}
+
+.nav-item {
+  border: 0;
+  background: transparent;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.35rem 0;
+}
+
+.nav-item ion-icon {
+  font-size: 1.45rem;
+}
+
+.nav-item.active {
+  color: #ef5e8a;
+}
+
+.add-button {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5b2bf, #ef7aa4);
+  color: #fff;
+  margin: -1rem auto 0;
+  box-shadow: 0 12px 24px rgba(223, 116, 158, 0.3);
+}
+
+.add-button ion-icon {
+  font-size: 2rem;
+  color: #fff;
+}

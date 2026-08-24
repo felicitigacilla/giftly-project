@@ -1,0 +1,98 @@
+<ion-content class="giftly-shell ion-padding">
+  <div class="top-bar">
+    <div class="brand-wrap">
+      <span class="giftly-logo">GIFTLY</span>
+    </div>
+    <div class="top-actions">
+      <ion-button class="login-pill" fill="clear" size="small" (click)="goToLogin()">Login</ion-button>
+      <ion-button fill="clear" class="icon-button" (click)="goToShop()">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" class="icon-button" (click)="goToCart()">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <h1 class="greeting">Hello, User!</h1>
+
+  <div class="hero-card">
+    <div class="hero-copy">
+      <h2>Make Every<br />Surprise<br />Meaningful</h2>
+      <p>Create personalized gift boxes or choose curated collections for every occasion.</p>
+      <ion-button class="build-button" (click)="goToShop()">Build your Box</ion-button>
+    </div>
+    <div class="hero-art">
+      <div class="gift-box">
+        <span class="gift-lid"></span>
+        <span class="gift-ribbon"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h3>Featured Products</h3>
+  </div>
+
+  <div *ngIf="loading" class="loading-box">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <div class="product-grid" *ngIf="!loading">
+    <ion-card *ngFor="let product of featuredProducts.slice(0, 3)" button="true" [routerLink]="['/product', product.id]">
+      <div class="product-image-wrap">
+        <img *ngIf="product.image" [src]="product.image" [alt]="product.name" />
+        <div *ngIf="!product.image" class="product-pattern">Giftly</div>
+      </div>
+      <ion-card-content>
+        <h4>{{ product.name }}</h4>
+        <div class="price-row">
+          <span>PHP {{ product.price || 0 }}</span>
+          <ion-icon name="cart-outline"></ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="promotions">
+    <div class="promo-card peach">
+      <h4>Birthday<br />Special</h4>
+      <p>Get 15% OFF on selected Birthday Boxes and celebration gifts.</p>
+    </div>
+    <div class="promo-card lilac">
+      <h4>Bundle and<br />Save</h4>
+      <p>Buy any Giftly Bundle and save up to 20%.</p>
+    </div>
+  </div>
+
+  <div class="promo-row">
+    <div class="mini-card mint">
+      <h4>Free<br />Shipping</h4>
+    </div>
+    <div class="mini-card peach-light">
+      <h4>Seasonal<br />Collection</h4>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <button class="nav-item active" (click)="goToShop()">
+      <ion-icon name="home-outline"></ion-icon>
+      <span>Home</span>
+    </button>
+    <button class="nav-item" (click)="goToShop()">
+      <ion-icon name="bag-outline"></ion-icon>
+      <span>Shop</span>
+    </button>
+    <button class="nav-item add-button" (click)="goToOrders()">
+      <ion-icon name="add-outline"></ion-icon>
+    </button>
+    <button class="nav-item" (click)="goToOrders()">
+      <ion-icon name="cube-outline"></ion-icon>
+      <span>Orders</span>
+    </button>
+    <button class="nav-item" (click)="goToProfile()">
+      <ion-icon name="person-outline"></ion-icon>
+      <span>Profile</span>
+    </button>
+  </div>
+</ion-content>

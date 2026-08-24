@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/cart"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Checkout</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Delivery details</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Full name</ion-label>
+        <ion-input [(ngModel)]="order.fullname" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Address</ion-label>
+        <ion-textarea [(ngModel)]="order.address" autoGrow="true"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">City</ion-label>
+        <ion-input [(ngModel)]="order.city" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Gift message</ion-label>
+        <ion-input [(ngModel)]="order.gift_message" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Recipient name</ion-label>
+        <ion-input [(ngModel)]="order.recipient_name" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Recipient phone</ion-label>
+        <ion-input [(ngModel)]="order.recipient_phone" type="tel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Payment method</ion-label>
+        <ion-select [(ngModel)]="order.payment_method" interface="popover">
+          <ion-select-option value="cod">Cash on delivery</ion-select-option>
+          <ion-select-option value="gcash">GCash</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Delivery date</ion-label>
+        <ion-input [(ngModel)]="order.delivery_date" type="date"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Delivery time</ion-label>
+        <ion-input [(ngModel)]="order.delivery_time" type="time"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" class="ion-margin-top" (click)="placeOrder()" [disabled]="loading">
+        {{ loading ? 'Placing order...' : 'Place order' }}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
