@@ -13,21 +13,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 }
 
 // Database connection (PostgreSQL via PDO with compatibility wrapper)
-// Prefer environment DATABASE_URL (Render) or PG* vars
+// Prefer database env vars in any common Render/Postgres format
 $databaseUrl = getenv('DATABASE_URL') ?: getenv('PG_URI') ?: false;
 if ($databaseUrl) {
     $parts = parse_url($databaseUrl);
-    $host = $parts['host'] ?? 'localhost';
-    $user = $parts['user'] ?? 'postgres';
-    $password = $parts['pass'] ?? '';
-    $database = isset($parts['path']) ? ltrim($parts['path'], '/') : 'giftly_db';
-    $port = $parts['port'] ?? null;
+    $host = $parts['host'] ?? getenv('DB_HOST') ?: 'localhost';
+    $user = $parts['user'] ?? getenv('DB_USERNAME') ?: getenv('PGUSER') ?: 'postgres';
+    $password = $parts['pass'] ?? getenv('DB_PASSWORD') ?: getenv('PGPASSWORD') ?: '';
+    $database = isset($parts['path']) ? ltrim($parts['path'], '/') : (getenv('DB_DATABASE') ?: getenv('PGDATABASE') ?: 'giftly_db');
+    $port = $parts['port'] ?? (getenv('DB_PORT') ?: getenv('PGPORT') ?: null);
 } else {
-    $host = getenv('PGHOST') ?: 'localhost';
-    $user = getenv('PGUSER') ?: 'postgres';
-    $password = getenv('PGPASSWORD') ?: '';
-    $database = getenv('PGDATABASE') ?: 'giftly_db';
-    $port = getenv('PGPORT') ?: null;
+    $host = getenv('DB_HOST') ?: getenv('PGHOST') ?: 'localhost';
+    $user = getenv('DB_USERNAME') ?: getenv('PGUSER') ?: 'postgres';
+    $password = getenv('DB_PASSWORD') ?: getenv('PGPASSWORD') ?: '';
+    $database = getenv('DB_DATABASE') ?: getenv('PGDATABASE') ?: 'giftly_db';
+    $port = getenv('DB_PORT') ?: getenv('PGPORT') ?: null;
 }
 
 // Include a minimal DBCompat if not already loaded (keeps API similar to the rest of the app)
