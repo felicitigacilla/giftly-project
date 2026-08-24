@@ -1,9 +1,9 @@
 FROM php:8.2-apache
 
-# Install MySQL and PostgreSQL extensions
+# Install PostgreSQL support only
 RUN apt-get update && apt-get install -y \
     libpq-dev \
-    && docker-php-ext-install mysqli pdo_mysql pdo_pgsql pgsql
+    && docker-php-ext-install pdo_pgsql pgsql
 
 # Enable mod_rewrite for Apache
 RUN a2enmod rewrite
