@@ -35,6 +35,9 @@ class DBCompat {
         if ($port) {
             $dsn .= ";port=$port";
         }
+        if ($host !== 'localhost' && $host !== '127.0.0.1' && stripos($host, 'localhost') === false) {
+            $dsn .= ";sslmode=require";
+        }
         try {
             $this->pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
         } catch (PDOException $e) {
