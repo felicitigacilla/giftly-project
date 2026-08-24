@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
 # Enable mod_rewrite for Apache
 RUN a2enmod rewrite
 
-# Copy your application files (they're already in the current directory)
+# Copy all files from current directory (giftly_project) to /var/www/html/
 COPY . /var/www/html/
 
 # Set permissions
