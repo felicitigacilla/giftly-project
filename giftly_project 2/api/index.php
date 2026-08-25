@@ -44,7 +44,22 @@ require_once 'config/database.php';
 $method = $_SERVER['REQUEST_METHOD'];
 $path = isset($_GET['route']) ? $_GET['route'] : '';
 $headers = getallheaders();
-$input = json_decode(file_get_contents('php://input'), true);
+
+$rawInput = file_get_contents('php://input');
+$input = [];
+
+if (is_string($rawInput) && trim($rawInput) !== '') {
+    $decodedInput = json_decode($rawInput, true);
+    if (json_last_error() === JSON_ERROR_NONE && is_array($decodedInput)) {
+        $input = $decodedInput;
+    } else {
+        parse_str($rawInput, $input);
+    }
+}
+
+if (empty($input) && !empty($_POST)) {
+    $input = $_POST;
+}
 
 // Simple router
 switch($path) {
