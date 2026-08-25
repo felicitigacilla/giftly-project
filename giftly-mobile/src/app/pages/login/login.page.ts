@@ -14,8 +14,8 @@ import { GiftlyApiService } from '../../services/giftly-api.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  email = 'admin@giftly.test';
-  password = 'password123';
+  email = '';
+  password = '';
   name = '';
   phone = '';
   isRegister = false;
