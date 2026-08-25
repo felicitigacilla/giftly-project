@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'https://giftly-mobile-api.onrender.com/api/index.php?route=',
 };
